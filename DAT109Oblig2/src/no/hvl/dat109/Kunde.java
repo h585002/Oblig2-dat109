@@ -46,6 +46,12 @@ public class Kunde {
 	public void setTelefonNr(int telefonNr) {
 		this.telefonNr = telefonNr;
 	}
+
+	@Override
+	public String toString() {
+		return "[fornavn: " + fornavn + ", etternavn: " + etternavn + ", adresse: " + adresse + ", telefonNr: "
+				+ telefonNr + "]";
+	}
 	
 	
 }
