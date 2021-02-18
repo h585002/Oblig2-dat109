@@ -4,11 +4,59 @@ import java.util.List;
 
 public class Bilutleieselskap {
 
-	private String Navn;
-	private int TelefonNr;
-	private String Adresse;
-	
-	List<Utleiekontor> kontorer;
-	List<Kunde> kunder;
-	
+	private String navn;
+	private int telefonNr;
+	private String adresse;
+	private List<Utleiekontor> kontorer;
+	private List<Kunde> kunder;
+
+	public Bilutleieselskap(String navn, int telefonNr, String adresse, List<Utleiekontor> kontorer,
+			List<Kunde> kunder) {
+		this.navn = navn;
+		this.telefonNr = telefonNr;
+		this.adresse = adresse;
+		this.kontorer = kontorer;
+		this.kunder = kunder;
+	}
+
+	public String getNavn() {
+		return navn;
+	}
+
+	public void setNavn(String navn) {
+		this.navn = navn;
+	}
+
+	public int getTelefonNr() {
+		return telefonNr;
+	}
+
+	public void setTelefonNr(int telefonNr) {
+		this.telefonNr = telefonNr;
+	}
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
+	public List<Utleiekontor> getKontorer() {
+		return kontorer;
+	}
+
+	public void setKontorer(List<Utleiekontor> kontorer) {
+		this.kontorer = kontorer;
+	}
+
+	public List<Kunde> getKunder() {
+		return kunder;
+	}
+
+	public void setKunder(List<Kunde> kunder) {
+		this.kunder = kunder;
+	}
+
 }
