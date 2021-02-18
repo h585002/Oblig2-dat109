@@ -24,7 +24,7 @@ public class Database {
 		kunder.add(
 				new Kunde("Ola", "Nordmann", "Gråbakken 7, 1234, Gråfossen", 88888888, new ArrayList<Reservasjon>()));
 
-		return new Bilutleieselskap("Ta dæ en bil!", 12345678, "Bortegaten 1, 7309, Langtvekke", kontorer, kunder);
+		return new Bilutleieselskap("Bonanza Bilutleie", 12345678, "Bortegaten 1, 7309, Langtvekke", kontorer, kunder);
 
 	}
 
