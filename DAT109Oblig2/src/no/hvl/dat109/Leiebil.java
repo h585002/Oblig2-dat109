@@ -2,14 +2,14 @@ package no.hvl.dat109;
 
 public class Leiebil {
 
-	private int regNr;
+	private String regNr;
 	private String merke;
 	private String modell;
 	private String farge;
 	private String utleiegruppe;
 	private boolean erLedig;
 
-	public Leiebil(int regNr, String merke, String modell, String farge, String utleiegruppe, boolean erLedig) {
+	public Leiebil(String regNr, String merke, String modell, String farge, String utleiegruppe, boolean erLedig) {
 		this.regNr = regNr;
 		this.merke = merke;
 		this.modell = modell;
@@ -18,11 +18,11 @@ public class Leiebil {
 		this.erLedig = erLedig;
 	}
 
-	public int getRegNr() {
+	public String getRegNr() {
 		return regNr;
 	}
 
-	public void setRegNr(int regNr) {
+	public void setRegNr(String regNr) {
 		this.regNr = regNr;
 	}
 

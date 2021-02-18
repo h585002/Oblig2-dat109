@@ -3,12 +3,12 @@ package no.hvl.dat109;
 public class Utleie {
 
 	private int kredittkortNr;
-	private int regNr;
+	private String regNr;
 	private int kilometer;
 	private String utleiedato;
 	private String returdato;
 
-	public Utleie(int kredittkortNr, int regNr, int kilometer, String utleiedato, String returdato) {
+	public Utleie(int kredittkortNr, String regNr, int kilometer, String utleiedato, String returdato) {
 		super();
 		this.kredittkortNr = kredittkortNr;
 		this.regNr = regNr;
@@ -25,11 +25,11 @@ public class Utleie {
 		this.kredittkortNr = kredittkortNr;
 	}
 
-	public int getRegNr() {
+	public String getRegNr() {
 		return regNr;
 	}
 
-	public void setRegNr(int regNr) {
+	public void setRegNr(String regNr) {
 		this.regNr = regNr;
 	}
 

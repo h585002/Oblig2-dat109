@@ -10,11 +10,12 @@ public class Kunde {
 	private int telefonNr;
 	private List<Reservasjon> reservasjoner;
 
-	public Kunde(String fornavn, String etternavn, String adresse, int telefonNr) {
+	public Kunde(String fornavn, String etternavn, String adresse, int telefonNr, List<Reservasjon> reservasjoner) {
 		this.fornavn = fornavn;
 		this.etternavn = etternavn;
 		this.adresse = adresse;
 		this.telefonNr = telefonNr;
+		this.reservasjoner = reservasjoner;
 	}
 
 	public String getFornavn() {
