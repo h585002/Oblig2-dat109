@@ -1,6 +1,7 @@
 package no.hvl.dat109;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Bilutleieselskap {
 
@@ -43,8 +44,9 @@ public class Bilutleieselskap {
 		this.adresse = adresse;
 	}
 
-	public List<Utleiekontor> getKontorer() {
-		return kontorer;
+	public List<String> getKontorer() {
+	return kontorer.stream().map(p -> p.getBy()).collect(Collectors.toList());
+
 	}
 
 	public void setKontorer(List<Utleiekontor> kontorer) {

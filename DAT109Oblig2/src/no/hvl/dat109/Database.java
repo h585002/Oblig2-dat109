@@ -16,9 +16,12 @@ public class Database {
 		leiebiler2.add(new Leiebil("EL54321", "Toyota", "Small", "Gul", "A", true));
 		leiebiler2.add(new Leiebil("AB54321", "BMW", "Truck", "Blå", "D", true));
 
+		//Endret adresse til by
 		List<Utleiekontor> kontorer = new ArrayList<Utleiekontor>();
-		kontorer.add(new Utleiekontor(1, 12341234, "Grågaten 14, 1234, Gråfossen", leiebiler1));
-		kontorer.add(new Utleiekontor(2, 12121212, "Bakkegaten 32, 4321, Bakkestedet", leiebiler2));
+		kontorer.add(new Utleiekontor(1, 12341234, "Bergen", leiebiler1));
+		kontorer.add(new Utleiekontor(2, 12121212, "Stavanger", leiebiler2));
+		kontorer.add(new Utleiekontor(3, 45345676, "Trondheim", leiebiler2));
+		kontorer.add(new Utleiekontor(4, 12343234, "Oslo", leiebiler2));
 
 		List<Kunde> kunder = new ArrayList<Kunde>();
 		kunder.add(

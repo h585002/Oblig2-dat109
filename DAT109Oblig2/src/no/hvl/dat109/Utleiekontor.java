@@ -6,13 +6,13 @@ public class Utleiekontor {
 
 	private int nummer;
 	private int telefonNr;
-	private String adresse;
+	private String by;
 	private List<Leiebil> leiebiler;
 
-	public Utleiekontor(int nummer, int telefonNr, String adresse, List<Leiebil> leiebiler) {
+	public Utleiekontor(int nummer, int telefonNr, String by, List<Leiebil> leiebiler) {
 		this.nummer = nummer;
 		this.telefonNr = telefonNr;
-		this.adresse = adresse;
+		this.by = by;
 		this.leiebiler = leiebiler;
 	}
 
@@ -32,12 +32,12 @@ public class Utleiekontor {
 		this.telefonNr = telefonNr;
 	}
 
-	public String getAdresse() {
-		return adresse;
+	public String getBy() {
+		return by;
 	}
 
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
+	public void setBy(String by) {
+		this.by = by;
 	}
 
 	public List<Leiebil> getLeiebiler() {
