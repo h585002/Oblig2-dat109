@@ -48,4 +48,9 @@ public class Utleiekontor {
 		this.leiebiler = leiebiler;
 	}
 
+	@Override
+	public String toString() {
+		return by.toUpperCase();
+	}
+
 }

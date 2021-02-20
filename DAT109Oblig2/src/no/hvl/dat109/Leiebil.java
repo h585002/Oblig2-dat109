@@ -66,4 +66,10 @@ public class Leiebil {
 		this.erLedig = erLedig;
 	}
 
+	@Override
+	public String toString() {
+		return "Leiebil [merke=" + merke + ", modell=" + modell + ", farge=" + farge + ", utleiegruppe=" + utleiegruppe
+				+ ", erLedig=" + erLedig + "]";
+	}
+
 }
