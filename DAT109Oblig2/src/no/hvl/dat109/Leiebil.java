@@ -68,8 +68,8 @@ public class Leiebil {
 
 	@Override
 	public String toString() {
-		return "Leiebil [merke=" + merke + ", modell=" + modell + ", farge=" + farge + ", utleiegruppe=" + utleiegruppe
-				+ ", erLedig=" + erLedig + "]";
+		return "[" + merke + " , Modell=" + modell + ", " + farge + ", " + utleiegruppe
+				+ ", erLedig= " + erLedig + "]";
 	}
 
 }
