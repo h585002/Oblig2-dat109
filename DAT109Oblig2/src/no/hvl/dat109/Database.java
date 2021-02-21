@@ -14,15 +14,15 @@ public class Database {
 
 		List<Leiebil> leiebiler2 = new ArrayList<Leiebil>();
 		leiebiler2.add(new Leiebil("EL54321", "Toyota", "Small", "Gul", BilgruppeEnum.LITEN, true));
-		leiebiler2.add(new Leiebil("AB54321", "BMW", "Truck", "Blå", BilgruppeEnum.STOR, true));
+		leiebiler2.add(new Leiebil("AB54321", "BMW", "Truck", "Blå", BilgruppeEnum.STASJONSVOGN, true));
 
 		List<Leiebil> leiebiler3 = new ArrayList<Leiebil>();
 		leiebiler3.add(new Leiebil("EL54321", "Toyota", "Small", "Gul", BilgruppeEnum.LITEN, true));
-		leiebiler3.add(new Leiebil("AB54321", "BMW", "Truck", "Blå", BilgruppeEnum.STOR, true));
+		leiebiler3.add(new Leiebil("AB54321", "BMW", "Truck", "Blå", BilgruppeEnum.STASJONSVOGN, true));
 
 		List<Leiebil> leiebiler4 = new ArrayList<Leiebil>();
 		leiebiler4.add(new Leiebil("EL54321", "Toyota", "Small", "Gul", BilgruppeEnum.LITEN, true));
-		leiebiler4.add(new Leiebil("AB54321", "BMW", "Truck", "Blå", BilgruppeEnum.STOR, true));
+		leiebiler4.add(new Leiebil("AB54321", "BMW", "Truck", "Blå", BilgruppeEnum.STASJONSVOGN, true));
 
 		// Endret adresse til by
 		List<Utleiekontor> kontorer = new ArrayList<Utleiekontor>();
@@ -37,7 +37,7 @@ public class Database {
 				new Kunde("Ola", "Nordmann", "Gråbakken 7, 1234, Gråfossen", 88888888, new ArrayList<Reservasjon>()));
 
 		return new Bilutleieselskap("Bonanza Bilutleie", 12345678, "Bortegaten 1, 7309, Langtvekke", kontorer, kunder);
-// TEST bb
+
 	}
 
 }
