@@ -34,7 +34,7 @@ public class Database {
 
 		List<Kunde> kunder = new ArrayList<Kunde>();
 		kunder.add(
-				new Kunde("Ola", "Nordmann", "Gråbakken 7, 1234, Gråfossen", 88888888, new ArrayList<Reservasjon>()));
+				new Kunde("Ola", "Nordmann", "Gråbakken 7, 1234, Gråfossen", 88888888, new Reservasjon()));
 
 		return new Bilutleieselskap("Bonanza Bilutleie", 12345678, "Bortegaten 1, 7309, Langtvekke", kontorer, kunder);
 

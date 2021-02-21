@@ -1,6 +1,5 @@
 package no.hvl.dat109;
 
-
 public class Kunde {
 
 	private String fornavn;
@@ -14,7 +13,7 @@ public class Kunde {
 		this.etternavn = etternavn;
 		this.adresse = adresse;
 		this.telefonNr = telefonNr;
-		this.setReservasjon(reservasjon);
+		this.reservasjon = reservasjon;
 	}
 
 	public String getFornavn() {

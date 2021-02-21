@@ -92,6 +92,14 @@ public class Reservasjon {
 		this.retur = retur;
 	}
 
+	public Kunde getKunde() {
+		return kunde;
+	}
+
+	public void setKunde(Kunde kunde) {
+		this.kunde = kunde;
+	}
+
 	@Override
 	public String toString() {
 		return "Reservasjon [utleiedato=" + utleiedato + ", antallDager=" + antallDager + ", pris=" + pris
