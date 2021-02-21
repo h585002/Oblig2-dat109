@@ -3,7 +3,7 @@ package no.hvl.dat109;
 public class Validator {
 
 	//Godtar alle bokstaver, lengde på 2-20
-	//bruker samme til fornavn og etternavn
+	//bruker samme for fornavn og etternavn
 	public boolean navnSjekk(String s) {
 		
 	return s != null && s.matches("^[-a-zA-ZæøåÆØÅ_ ]{2,20}$");		
