@@ -16,6 +16,7 @@ public class Main {
 		
 		while (running) {
 			
+			System.out.println("Velg hva du ønsker å gjøre: (Skriv tallet)");
 			switch (sc.nextLine()) {
 			case "1": reserver();
 			case "4": running = false;
