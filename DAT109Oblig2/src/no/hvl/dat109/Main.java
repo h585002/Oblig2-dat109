@@ -1,5 +1,7 @@
 package no.hvl.dat109;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,7 +19,6 @@ public class Main {
 		List<Utleiekontor> kontorer = bilutleieselskap.getKontorer();
 		Util util = new Util();
 		Scanner sc = new Scanner(System.in);
-		
 			
 		// Bør kanskje ha validering på alt
 		//util.VelkommenMelding();
@@ -33,7 +34,6 @@ public class Main {
 		String by2 = sc.nextLine();
 		Utleiekontor returkontor = bilutleieselskap.KontorEtterNavn(by2);
 		System.out.println(returkontor);
-		
 	}
 
 }

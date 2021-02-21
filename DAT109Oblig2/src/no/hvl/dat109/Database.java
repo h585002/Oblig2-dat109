@@ -16,12 +16,21 @@ public class Database {
 		leiebiler2.add(new Leiebil("EL54321", "Toyota", "Small", "Gul", "A", true));
 		leiebiler2.add(new Leiebil("AB54321", "BMW", "Truck", "Blå", "D", true));
 
-		//Endret adresse til by
+		List<Leiebil> leiebiler3 = new ArrayList<Leiebil>();
+		leiebiler3.add(new Leiebil("EL54321", "Toyota", "Small", "Gul", "A", true));
+		leiebiler3.add(new Leiebil("AB54321", "BMW", "Truck", "Blå", "D", true));
+
+		List<Leiebil> leiebiler4 = new ArrayList<Leiebil>();
+		leiebiler4.add(new Leiebil("EL54321", "Toyota", "Small", "Gul", "A", true));
+		leiebiler4.add(new Leiebil("AB54321", "BMW", "Truck", "Blå", "D", true));
+
+		// Endret adresse til by
 		List<Utleiekontor> kontorer = new ArrayList<Utleiekontor>();
-		kontorer.add(new Utleiekontor(1, 12341234, "Bergen", leiebiler1));
-		kontorer.add(new Utleiekontor(2, 12121212, "Stavanger", leiebiler2));
-		kontorer.add(new Utleiekontor(3, 45345676, "Trondheim", leiebiler2));
-		kontorer.add(new Utleiekontor(4, 12343234, "Oslo", leiebiler2));
+		kontorer.add(new Utleiekontor(1, 12341234, "Bergen", "Flyplassvegen 555, 5258 BERGEN", leiebiler1));
+		kontorer.add(new Utleiekontor(2, 12121212, "Stavanger", "Flyplassvegen 230, 4055 SOLA", leiebiler2));
+		kontorer.add(
+				new Utleiekontor(3, 45345676, "Trondheim", "Trondheim lufthavn Værnes, 7502 STJØRDAL", leiebiler3));
+		kontorer.add(new Utleiekontor(4, 12343234, "Oslo", "Edvard Munchs veg, 2061 GARDEMOEN", leiebiler4));
 
 		List<Kunde> kunder = new ArrayList<Kunde>();
 		kunder.add(
