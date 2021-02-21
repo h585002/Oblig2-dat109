@@ -11,6 +11,7 @@ public class Reservasjon {
 	private Utleiekontor returkontor;
 	private Utleie utleie;
 	private Retur retur;
+	private Kunde kunde;
 
 	public Reservasjon() {
 		this.utleiedato = null;
@@ -20,10 +21,11 @@ public class Reservasjon {
 		this.returkontor = null;
 		this.utleie = null;
 		this.retur = null;
+		this.kunde = null;
 	}
 	
 	public Reservasjon(LocalDateTime utleiedato, int antallDager, int pris, Utleiekontor utleiekontor,
-			Utleiekontor returkontor, Utleie utleie, Retur retur) {
+			Utleiekontor returkontor, Utleie utleie, Retur retur, Kunde kunde) {
 		this.utleiedato = utleiedato;
 		this.antallDager = antallDager;
 		this.pris = pris;
@@ -31,6 +33,7 @@ public class Reservasjon {
 		this.returkontor = returkontor;
 		this.utleie = utleie;
 		this.retur = retur;
+		this.kunde = kunde;
 	}
 
 	public LocalDateTime getUtleiedato() {
