@@ -59,17 +59,6 @@ public class Bilutleieselskap {
 	public void setKunder(List<Kunde> kunder) {
 		this.kunder = kunder;
 	}
-
-	//Metode for å få indeks på kontorer
-	public StringBuilder visKontorer() {
-		
-		StringBuilder kontorerString = new StringBuilder();
-		for(int i = 0; i < kontorer.size(); i++) {			
-			kontorerString.append(i + "- " + kontorer.get(i) + ", ");
-		}
-		
-		return kontorerString;
-	}
 	
 	//returnerer kontorer som bruker skriver inn
 	public Utleiekontor KontorEtterNavn(String by) {		

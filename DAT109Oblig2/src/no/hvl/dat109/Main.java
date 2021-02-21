@@ -20,15 +20,19 @@ public class Main {
 		
 			
 		// Bør kanskje ha validering på alt
-		util.VelkommenMelding();
-		util.nyKunde();
+		//util.VelkommenMelding();
+		//util.nyKunde();
 		
 		System.out.println("\n" + "Vi har kontorer i disse byene: " +
 		bilutleieselskap.getKontorer() + "\n" + "Skriv inn hvor du vil leie bil fra: ");
 		
 		String by = sc.nextLine();		
-		Utleiekontor kontor = bilutleieselskap.KontorEtterNavn(by);
-		System.out.println(kontor);
+		Utleiekontor utleiekontor = bilutleieselskap.KontorEtterNavn(by);
+		System.out.println(utleiekontor);
+		System.out.println("Hvor vil du returnere leiebilen?");
+		String by2 = sc.nextLine();
+		Utleiekontor returkontor = bilutleieselskap.KontorEtterNavn(by2);
+		System.out.println(returkontor);
 		
 	}
 
