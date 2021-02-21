@@ -1,13 +1,16 @@
 package no.hvl.dat109;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 	
-	static Database database = new Database(); //Later som vi henter eksisterende kunder, kontorer og biler fra database, istedenfor å implementere det.
+	//Later som vi henter eksisterende kunder, kontorer og biler fra database, istedenfor å implementere det.
+	static Database database = new Database(); 
 	static Bilutleieselskap bilutleieselskap = database.hentInfo();;
 	static Reservasjon reservasjon = new Reservasjon();
+	static Validator validator = new Validator();
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -16,7 +19,9 @@ public class Main {
 		
 		while (running) {
 			
-			System.out.println("Velg hva du ønsker å gjøre: (Skriv tallet)\n1 - Reserver\n2 - NOT IMPLEMENTED\n3 - NOT IMPLEMENTED\n4 - Avslutt");
+			System.out.println("Velkommen til Bonanza Bilutleie!\n");
+			System.out.println("Velg hva du ønsker å gjøre: (Skriv tallet)\n1 - Reserver\n2 "
+								+ "- NOT IMPLEMENTED\n3 - NOT IMPLEMENTED\n4 - Avslutt");
 			switch (sc.nextLine()) {
 			case "1": 
 				reserver();
@@ -34,7 +39,9 @@ public class Main {
 	}
 
 	public static void reserver() {
-
+		
+		System.out.println("Registrer dine personopplysninger her:\n");
+		reservasjon.setKunde(nyKunde());
 		System.out.println("\n" + "Vi har kontorer i disse byene: " + bilutleieselskap.getKontorer());
 		reservasjon.setUtleiekontor(utleiested());
 		reservasjon.setReturkontor(retursted());
@@ -42,6 +49,47 @@ public class Main {
 		reservasjon.setAntallDager(antallDager());
 		reservasjon.setPris(pris());
 
+	}
+	
+	public static Kunde nyKunde() {
+			
+		String fornavn = null;
+		while(!validator.navnSjekk(fornavn)) {
+			if(fornavn != null) {
+				System.out.println("Ugyldig fornavn, prøv igjen:");
+			}
+		System.out.println("Fornavn:");
+		fornavn = sc.nextLine();
+	}
+		String etternavn = null;
+		while(!validator.navnSjekk(etternavn)) {
+			if(etternavn != null) {
+				System.out.println("Ugyldig etternavn, prøv igjen:");
+			}
+		System.out.println("Etternavn:");
+		etternavn = sc.nextLine();
+	}	
+		String adresse = null;
+		while(!validator.adresseSjekk(adresse)) {
+			if(adresse != null) {
+				System.out.println("Ugyldig adresse, prøv igjen:");
+			}
+		System.out.println("Adresse:");
+		adresse = sc.nextLine();
+	}	
+		String telefonNr = null;
+		while(!validator.telefonNrSjekk(telefonNr)) {
+			if(etternavn != null) {
+				System.out.println("Ugyldig telefonNummer, må inneholde 8 siffer:");
+			}
+		System.out.println("TelefonNummer:");
+		telefonNr = sc.nextLine();	
+	}
+		int tlf = Integer.parseInt(telefonNr);
+		
+		Kunde kunde = new Kunde(fornavn, etternavn, adresse, tlf, reservasjon);
+		System.out.println("Opplysningene du har gitt:" + "\n" + kunde.toString());
+		return kunde;
 	}
 
 	public static Utleiekontor utleiested() {
