@@ -4,18 +4,31 @@ import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class Main {
-
-	static Bilutleieselskap bilutleieselskap;
-	static Reservasjon reservasjon;
+	
+	static Database database = new Database(); //Later som vi henter eksisterende kunder, kontorer og biler fra database, istedenfor å implementere det.
+	static Bilutleieselskap bilutleieselskap = database.hentInfo();;
+	static Reservasjon reservasjon = new Reservasjon();
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
 
-		// Later som vi henter eksisterende kunder, kontorer og biler fra database,
-		// istedenfor å implementere det.
-		Database database = new Database();
-		bilutleieselskap = database.hentInfo();
-		reservasjon = new Reservasjon();
+		boolean running = true;
+		
+		while (running) {
+			
+			switch (sc.nextLine()) {
+			case "1": reserver();
+			case "4": running = false;
+			default: System.out.println("Ugyldig input");
+			}
+			
+		}	
+		
+		sc.close();
+
+	}
+
+	public static void reserver() {
 
 		System.out.println("\n" + "Vi har kontorer i disse byene: " + bilutleieselskap.getKontorer());
 		reservasjon.setUtleiekontor(utleiested());
@@ -24,8 +37,6 @@ public class Main {
 		reservasjon.setAntallDager(antallDager());
 		reservasjon.setPris(pris());
 
-		sc.close();
-		
 	}
 
 	public static Utleiekontor utleiested() {
@@ -62,7 +73,7 @@ public class Main {
 		int minutt = Integer.parseInt(sc.nextLine());
 		LocalDateTime tid = LocalDateTime.of(år, måned, dag, time, minutt);
 		System.out.println(tid);
-		
+
 		return tid;
 	}
 
@@ -71,12 +82,12 @@ public class Main {
 		System.out.println("Hvor mange dager skal du leie bilen? ");
 		int dager = Integer.parseInt(sc.nextLine());
 		System.out.println(dager);
-		
+
 		return dager;
 	}
 
 	public static int pris() {
-		
+
 		System.out.println("Ledige kategorier: ");
 		Utleiekontor kontor = reservasjon.getUtleiekontor();
 		boolean a, b, c, d;
@@ -87,7 +98,7 @@ public class Main {
 			else if (kontor.getLeiebiler().get(i).getUtleiegruppe() == BilgruppeEnum.MELLOMSTOR)
 				b = true;
 			else if (kontor.getLeiebiler().get(i).getUtleiegruppe() == BilgruppeEnum.STOR)
-				c = true;	
+				c = true;
 			else if (kontor.getLeiebiler().get(i).getUtleiegruppe() == BilgruppeEnum.STASJONSVOGN)
 				d = true;
 		}
@@ -95,29 +106,34 @@ public class Main {
 		if (!kontor.equals(reservasjon.getReturkontor()))
 			pris = 100;
 		if (a) {
-			System.out.println("A - Liten: " + (Priser.getA()*reservasjon.getAntallDager() + pris) + "kr for " + reservasjon.getAntallDager() + " dager");
+			System.out.println("A - Liten: " + (Priser.A_PRIS * reservasjon.getAntallDager() + pris) + "kr for "
+					+ reservasjon.getAntallDager() + " dager");
 		}
 		if (b) {
-			System.out.println("B - Mellomstor: " + (Priser.getB()*reservasjon.getAntallDager() + pris) + "kr for " + reservasjon.getAntallDager() + " dager");
+			System.out.println("B - Mellomstor: " + (Priser.B_PRIS * reservasjon.getAntallDager() + pris) + "kr for "
+					+ reservasjon.getAntallDager() + " dager");
 		}
 		if (c) {
-			System.out.println("C - Stor: " + (Priser.getC()*reservasjon.getAntallDager() + pris) + "kr for " + reservasjon.getAntallDager() + " dager");
+			System.out.println("C - Stor: " + (Priser.C_PRIS * reservasjon.getAntallDager() + pris) + "kr for "
+					+ reservasjon.getAntallDager() + " dager");
 		}
 		if (d) {
-			System.out.println("D - Stasjonsvogn: " + (Priser.getD()*reservasjon.getAntallDager() + pris) + "kr for " + reservasjon.getAntallDager() + " dager");
+			System.out.println("D - Stasjonsvogn: " + (Priser.D_PRIS * reservasjon.getAntallDager() + pris) + "kr for "
+					+ reservasjon.getAntallDager() + " dager");
 		}
 		System.out.println("Skriv hvilken kategori du skal bestille: (Bare bokstaven)");
 		switch (sc.nextLine().toUpperCase()) {
-			case "A":
-				pris += Priser.getA();
-			case "B":
-				pris += Priser.getB();
-			case "C":
-				pris += Priser.getC();
-			case "D":
-				pris += Priser.getD();
-			default:;
-		}		
+		case "A":
+			pris += Priser.A_PRIS;
+		case "B":
+			pris += Priser.B_PRIS;
+		case "C":
+			pris += Priser.C_PRIS;
+		case "D":
+			pris += Priser.D_PRIS;
+		default:
+			;
+		}
 
 		return pris;
 	}
