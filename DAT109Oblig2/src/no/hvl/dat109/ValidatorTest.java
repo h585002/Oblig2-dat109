@@ -37,6 +37,6 @@ public class ValidatorTest {
 	
 	@Test
 	public void adresseTrue() {
-		assertTrue(validator.adresseSjekk("Eikelandsbakken 23"));
+		assertTrue(validator.adresseSjekk("Eikelandsbakken 24"));
 	}
 }
