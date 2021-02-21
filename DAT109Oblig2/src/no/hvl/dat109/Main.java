@@ -2,6 +2,7 @@ package no.hvl.dat109;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -24,6 +25,8 @@ public class Main {
 		//util.VelkommenMelding();
 		//util.nyKunde();
 		
+		DateTimeFormatter dtf = DateTimeFormatter.BASIC_ISO_DATE;
+		
 		System.out.println("\n" + "Vi har kontorer i disse byene: " +
 		bilutleieselskap.getKontorer() + "\n" + "Skriv inn hvor du vil leie bil fra: ");
 		
@@ -34,6 +37,24 @@ public class Main {
 		String by2 = sc.nextLine();
 		Utleiekontor returkontor = bilutleieselskap.KontorEtterNavn(by2);
 		System.out.println(returkontor);
+		
+		System.out.println("Skriv inn dato du ønsker å leie fra. (dd/MM/yyyy)");
+		String stringdato = sc.nextLine();
+		System.out.println();
+		
+		dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate dato = LocalDate.parse(stringdato, dtf);
+		System.out.println(dato);
+		
+		System.out.println("Skriv inn ønsket klokkeslett for utleie. (HH:mm)");
+		String klokke = sc.nextLine();
+		dtf = DateTimeFormatter.ofPattern("hh:mm");
+		LocalTime tidspunkt = LocalTime.parse(klokke);
+		System.out.println(tidspunkt);
+		
+		System.out.println("Skriv inn hvor mange dager du vil leie bilen: ");
+		int dager = sc.nextInt();
+		System.out.println(dager);
 	}
 
 }
