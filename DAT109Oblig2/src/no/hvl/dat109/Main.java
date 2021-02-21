@@ -24,10 +24,15 @@ public class Main {
 		reservasjon = new Reservasjon();
 
 		System.out.println("\n" + "Vi har kontorer i disse byene: " + bilutleieselskap.getKontorer());
+		reservasjon.setUtleiekontor(utleiested());
+		reservasjon.setReturkontor(retursted());
+		reservasjon.setUtleiedato(utleiedato());
+		reservasjon.setAntallDager(antallDager());
+		reservasjon.setPris(pris());
 
 	}
 
-	public Utleiekontor utleiested() {
+	public static Utleiekontor utleiested() {
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Skriv inn hvor du vil leie bil fra: ");
@@ -39,7 +44,7 @@ public class Main {
 		return utleiekontor;
 	}
 
-	public Utleiekontor retursted() {
+	public static Utleiekontor retursted() {
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Skriv inn hvor du vil returnere bilen: ");
@@ -51,7 +56,7 @@ public class Main {
 		return returkontor;
 	}
 
-	public LocalDateTime utleiedato() {
+	public static LocalDateTime utleiedato() {
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Skriv inn når du vil hente bilen... (Skriv med tall)\nÅr:");
@@ -71,7 +76,7 @@ public class Main {
 		return tid;
 	}
 
-	public int antallDager() {
+	public static int antallDager() {
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Hvor mange dager skal du leie bilen? ");
@@ -82,7 +87,7 @@ public class Main {
 		return dager;
 	}
 
-	public String kategori() {
+	public static int pris() {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Ledige kategorier: ");
@@ -99,37 +104,39 @@ public class Main {
 			else if (kontor.getLeiebiler().get(i).getUtleiegruppe() == BilgruppeEnum.STASJONSVOGN)
 				d = true;
 		}
-		int gebyr = 0;
-		if (!kontor.equals(retur))
-			gebyr = 100;
+		int pris = 0;
+		if (!kontor.equals(reservasjon.getReturkontor()))
+			pris = 100;
 		if (a) {
-			System.out.println("A - Liten");
+			System.out.println("A - Liten: " + (Priser.getA()*reservasjon.getAntallDager() + pris) + "kr for " + reservasjon.getAntallDager() + " dager");
 		}
 		if (b) {
-			System.out.println("B - Mellomstor");
+			System.out.println("B - Mellomstor: " + (Priser.getB()*reservasjon.getAntallDager() + pris) + "kr for " + reservasjon.getAntallDager() + " dager");
 		}
 		if (c) {
-			System.out.println("C - Stor");
+			System.out.println("C - Stor: " + (Priser.getC()*reservasjon.getAntallDager() + pris) + "kr for " + reservasjon.getAntallDager() + " dager");
 		}
 		if (d) {
-			System.out.println("D - Stasjonsvogn");
+			System.out.println("D - Stasjonsvogn: " + (Priser.getD()*reservasjon.getAntallDager() + pris) + "kr for " + reservasjon.getAntallDager() + " dager");
 		}
 		System.out.println("Skriv hvilken kategori du skal bestille: (Bare bokstaven)");
-		BilgruppeEnum kat;
 		switch (sc.nextLine().toUpperCase()) {
 			case "A":
-				;
-			case "B":;
-			case "C":;
-			case "D":;
+				pris += Priser.getA();
+			case "B":
+				pris += Priser.getB();
+			case "C":
+				pris += Priser.getC();
+			case "D":
+				pris += Priser.getD();
 			default:;
 		}		
 
 		sc.close();
-		return null;
+		return pris;
 	}
 
-	public Kunde lagreKunde() {
+	public static Kunde lagreKunde() {
 		Scanner sc = new Scanner(System.in);
 
 		sc.close();

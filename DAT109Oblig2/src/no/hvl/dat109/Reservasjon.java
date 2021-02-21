@@ -89,4 +89,11 @@ public class Reservasjon {
 		this.retur = retur;
 	}
 
+	@Override
+	public String toString() {
+		return "Reservasjon [utleiedato=" + utleiedato + ", antallDager=" + antallDager + ", pris=" + pris
+				+ ", utleiekontor=" + utleiekontor + ", returkontor=" + returkontor + ", utleie=" + utleie + ", retur="
+				+ retur + "]";
+	}
+
 }
