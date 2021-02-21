@@ -6,6 +6,7 @@ public enum BilgruppeEnum {
 	LITEN,
 	MELLOMSTOR,
 	STOR,
+	STASJONSVOGN;
 	
 
 
