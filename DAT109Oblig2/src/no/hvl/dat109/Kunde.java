@@ -1,6 +1,5 @@
 package no.hvl.dat109;
 
-import java.util.List;
 
 public class Kunde {
 
@@ -8,14 +7,14 @@ public class Kunde {
 	private String etternavn;
 	private String adresse;
 	private int telefonNr;
-	private List<Reservasjon> reservasjoner;
+	private Reservasjon reservasjon;
 
-	public Kunde(String fornavn, String etternavn, String adresse, int telefonNr, List<Reservasjon> reservasjoner) {
+	public Kunde(String fornavn, String etternavn, String adresse, int telefonNr, Reservasjon reservasjon) {
 		this.fornavn = fornavn;
 		this.etternavn = etternavn;
 		this.adresse = adresse;
 		this.telefonNr = telefonNr;
-		this.reservasjoner = reservasjoner;
+		this.setReservasjon(reservasjon);
 	}
 
 	public String getFornavn() {
@@ -50,14 +49,14 @@ public class Kunde {
 		this.telefonNr = telefonNr;
 	}
 
-	public List<Reservasjon> getReservasjoner() {
-		return reservasjoner;
+	public Reservasjon getReservasjon() {
+		return reservasjon;
 	}
 
-	public void setReservasjoner(List<Reservasjon> reservasjoner) {
-		this.reservasjoner = reservasjoner;
+	public void setReservasjon(Reservasjon reservasjon) {
+		this.reservasjon = reservasjon;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "[fornavn: " + fornavn + ", etternavn: " + etternavn + ", adresse: " + adresse + ", telefonNr: "
