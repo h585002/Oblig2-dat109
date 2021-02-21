@@ -8,21 +8,21 @@ public class Database {
 	public Bilutleieselskap hentInfo() {
 
 		List<Leiebil> leiebiler1 = new ArrayList<Leiebil>();
-		leiebiler1.add(new Leiebil("AB12345", "Toyota", "Big", "Grønn", "C", true));
-		leiebiler1.add(new Leiebil("EL12345", "Mercedes", "Mini", "Blå", "A", true));
-		leiebiler1.add(new Leiebil("AC12345", "Volvo", "Mellow", "Hvit", "B", true));
+		leiebiler1.add(new Leiebil("AB12345", "Toyota", "Big", "Grønn", BilgruppeEnum.STOR, true));
+		leiebiler1.add(new Leiebil("EL12345", "Mercedes", "Mini", "Blå", BilgruppeEnum.LITEN, true));
+		leiebiler1.add(new Leiebil("AC12345", "Volvo", "Mellow", "Hvit", BilgruppeEnum.MELLOMSTOR, true));
 
 		List<Leiebil> leiebiler2 = new ArrayList<Leiebil>();
-		leiebiler2.add(new Leiebil("EL54321", "Toyota", "Small", "Gul", "A", true));
-		leiebiler2.add(new Leiebil("AB54321", "BMW", "Truck", "Blå", "D", true));
+		leiebiler2.add(new Leiebil("EL54321", "Toyota", "Small", "Gul", BilgruppeEnum.LITEN, true));
+		leiebiler2.add(new Leiebil("AB54321", "BMW", "Truck", "Blå", BilgruppeEnum.STOR, true));
 
 		List<Leiebil> leiebiler3 = new ArrayList<Leiebil>();
-		leiebiler3.add(new Leiebil("EL54321", "Toyota", "Small", "Gul", "A", true));
-		leiebiler3.add(new Leiebil("AB54321", "BMW", "Truck", "Blå", "D", true));
+		leiebiler3.add(new Leiebil("EL54321", "Toyota", "Small", "Gul", BilgruppeEnum.LITEN, true));
+		leiebiler3.add(new Leiebil("AB54321", "BMW", "Truck", "Blå", BilgruppeEnum.STOR, true));
 
 		List<Leiebil> leiebiler4 = new ArrayList<Leiebil>();
-		leiebiler4.add(new Leiebil("EL54321", "Toyota", "Small", "Gul", "A", true));
-		leiebiler4.add(new Leiebil("AB54321", "BMW", "Truck", "Blå", "D", true));
+		leiebiler4.add(new Leiebil("EL54321", "Toyota", "Small", "Gul", BilgruppeEnum.LITEN, true));
+		leiebiler4.add(new Leiebil("AB54321", "BMW", "Truck", "Blå", BilgruppeEnum.STOR, true));
 
 		// Endret adresse til by
 		List<Utleiekontor> kontorer = new ArrayList<Utleiekontor>();
