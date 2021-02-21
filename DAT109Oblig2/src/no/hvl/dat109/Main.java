@@ -13,6 +13,7 @@ public class Main {
 
 	static Bilutleieselskap bilutleieselskap;
 	static Reservasjon reservasjon;
+	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
 
@@ -20,7 +21,6 @@ public class Main {
 		// istedenfor å implementere det.
 		Database database = new Database();
 		bilutleieselskap = database.hentInfo();
-		List<Utleiekontor> kontorer = bilutleieselskap.getKontorer();
 		reservasjon = new Reservasjon();
 
 		System.out.println("\n" + "Vi har kontorer i disse byene: " + bilutleieselskap.getKontorer());
@@ -30,34 +30,31 @@ public class Main {
 		reservasjon.setAntallDager(antallDager());
 		reservasjon.setPris(pris());
 
+		sc.close();
+		
 	}
 
 	public static Utleiekontor utleiested() {
-		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Skriv inn hvor du vil leie bil fra: ");
 		String by = sc.nextLine();
 		Utleiekontor utleiekontor = bilutleieselskap.KontorEtterNavn(by);
 		System.out.println(utleiekontor);
 
-		sc.close();
 		return utleiekontor;
 	}
 
 	public static Utleiekontor retursted() {
-		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Skriv inn hvor du vil returnere bilen: ");
 		String by = sc.nextLine();
 		Utleiekontor returkontor = bilutleieselskap.KontorEtterNavn(by);
 		System.out.println(returkontor);
 
-		sc.close();
 		return returkontor;
 	}
 
 	public static LocalDateTime utleiedato() {
-		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Skriv inn når du vil hente bilen... (Skriv med tall)\nÅr:");
 		int år = Integer.parseInt(sc.nextLine());
@@ -72,23 +69,19 @@ public class Main {
 		LocalDateTime tid = LocalDateTime.of(år, måned, dag, time, minutt);
 		System.out.println(tid);
 		
-		sc.close();
 		return tid;
 	}
 
 	public static int antallDager() {
-		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Hvor mange dager skal du leie bilen? ");
 		int dager = Integer.parseInt(sc.nextLine());
 		System.out.println(dager);
 		
-		sc.close();
 		return dager;
 	}
 
 	public static int pris() {
-		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Ledige kategorier: ");
 		Utleiekontor kontor = reservasjon.getUtleiekontor();
@@ -132,14 +125,11 @@ public class Main {
 			default:;
 		}		
 
-		sc.close();
 		return pris;
 	}
 
 	public static Kunde lagreKunde() {
-		Scanner sc = new Scanner(System.in);
 
-		sc.close();
 		return null;
 	}
 
