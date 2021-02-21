@@ -70,5 +70,16 @@ public class Bilutleieselskap {
 		
 		return kontorerString;
 	}
+	
+	//returnerer kontorer som bruker skriver inn
+	public Utleiekontor KontorEtterNavn(String by) {		
+		Utleiekontor sok = null;
+		for(int i = 0; i < kontorer.size(); i++) {			
+			if(kontorer.get(i).getBy().equalsIgnoreCase(by)) {	
+				sok = kontorer.get(i);
+			}
+		}
+		return sok;
+	}
 
 }

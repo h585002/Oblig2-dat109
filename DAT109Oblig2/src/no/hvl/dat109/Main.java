@@ -24,12 +24,11 @@ public class Main {
 		util.nyKunde();
 		
 		System.out.println("\n" + "Vi har kontorer i disse byene: " +
-		bilutleieselskap.visKontorer() + "\n" + "Skriv inn tallet på hvor du vil leie bil fra: ");
+		bilutleieselskap.getKontorer() + "\n" + "Skriv inn hvor du vil leie bil fra: ");
 		
-		//Sikkert en bedre måte for at bruker kan velge utleiekontor/bil
-		int byIndex = sc.nextInt();		
-		Utleiekontor by = kontorer.get(byIndex);
-		System.out.println(by);
+		String by = sc.nextLine();		
+		Utleiekontor kontor = bilutleieselskap.KontorEtterNavn(by);
+		System.out.println(kontor);
 		
 	}
 
