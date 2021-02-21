@@ -37,7 +37,7 @@ public class Database {
 				new Kunde("Ola", "Nordmann", "Gråbakken 7, 1234, Gråfossen", 88888888, new ArrayList<Reservasjon>()));
 
 		return new Bilutleieselskap("Bonanza Bilutleie", 12345678, "Bortegaten 1, 7309, Langtvekke", kontorer, kunder);
-// TEST
+// TEST bb
 	}
 
 }
