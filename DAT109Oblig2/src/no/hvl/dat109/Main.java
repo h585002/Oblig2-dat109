@@ -56,5 +56,16 @@ public class Main {
 		int dager = sc.nextInt();
 		System.out.println(dager);
 	}
+	
+	public Utleiekontor utleiested() {
+		return null;
+	}
+	
+	public Utleiekontor retursted() {
+		return null;
+	}
 
+	public LocalDateTime utleiedato() {
+		return null;
+	}
 }

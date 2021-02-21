@@ -1,15 +1,16 @@
 package no.hvl.dat109;
 
+import java.time.LocalDateTime;
+
 public class Utleie {
 
 	private int kredittkortNr;
 	private String regNr;
 	private int kilometer;
-	private String utleiedato;
-	private String returdato;
+	private LocalDateTime utleiedato;
+	private LocalDateTime returdato;
 
-	public Utleie(int kredittkortNr, String regNr, int kilometer, String utleiedato, String returdato) {
-		super();
+	public Utleie(int kredittkortNr, String regNr, int kilometer, LocalDateTime utleiedato, LocalDateTime returdato) {
 		this.kredittkortNr = kredittkortNr;
 		this.regNr = regNr;
 		this.kilometer = kilometer;
@@ -41,19 +42,19 @@ public class Utleie {
 		this.kilometer = kilometer;
 	}
 
-	public String getUtleiedato() {
+	public LocalDateTime getUtleiedato() {
 		return utleiedato;
 	}
 
-	public void setUtleiedato(String utleiedato) {
+	public void setUtleiedato(LocalDateTime utleiedato) {
 		this.utleiedato = utleiedato;
 	}
 
-	public String getReturdato() {
+	public LocalDateTime getReturdato() {
 		return returdato;
 	}
 
-	public void setReturdato(String returdato) {
+	public void setReturdato(LocalDateTime returdato) {
 		this.returdato = returdato;
 	}
 

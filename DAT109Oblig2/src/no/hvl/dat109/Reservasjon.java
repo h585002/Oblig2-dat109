@@ -1,8 +1,10 @@
 package no.hvl.dat109;
 
+import java.time.LocalDateTime;
+
 public class Reservasjon {
 
-	private String utleiedato;
+	private LocalDateTime utleiedato;
 	private int antallDager;
 	private int pris;
 	private Utleiekontor utleiekontor;
@@ -10,9 +12,8 @@ public class Reservasjon {
 	private Utleie utleie;
 	private Retur retur;
 
-	public Reservasjon(String utleiedato, int antallDager, int pris, Utleiekontor utleiekontor,
+	public Reservasjon(LocalDateTime utleiedato, int antallDager, int pris, Utleiekontor utleiekontor,
 			Utleiekontor returkontor, Utleie utleie, Retur retur) {
-		super();
 		this.utleiedato = utleiedato;
 		this.antallDager = antallDager;
 		this.pris = pris;
@@ -22,11 +23,11 @@ public class Reservasjon {
 		this.retur = retur;
 	}
 
-	public String getUtleiedato() {
+	public LocalDateTime getUtleiedato() {
 		return utleiedato;
 	}
 
-	public void setUtleiedato(String utleiedato) {
+	public void setUtleiedato(LocalDateTime utleiedato) {
 		this.utleiedato = utleiedato;
 	}
 

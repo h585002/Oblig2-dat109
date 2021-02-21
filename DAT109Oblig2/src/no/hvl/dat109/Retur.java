@@ -1,12 +1,13 @@
 package no.hvl.dat109;
 
+import java.time.LocalDateTime;
+
 public class Retur {
 
 	private int kilometer;
-	private String returdato;
+	private LocalDateTime returdato;
 
-	public Retur(int kilometer, String returdato) {
-		super();
+	public Retur(int kilometer, LocalDateTime returdato) {
 		this.kilometer = kilometer;
 		this.returdato = returdato;
 	}
@@ -19,11 +20,11 @@ public class Retur {
 		this.kilometer = kilometer;
 	}
 
-	public String getReturdato() {
+	public LocalDateTime getReturdato() {
 		return returdato;
 	}
 
-	public void setReturdato(String returdato) {
+	public void setReturdato(LocalDateTime returdato) {
 		this.returdato = returdato;
 	}
 
