@@ -84,8 +84,16 @@ public class Main {
 					input = Integer.parseInt(sc.nextLine());
 					List<Kunde> kunden = bilutleieselskap.getKunder().stream().filter(a -> a.getTelefonNr() == input)
 							.collect(Collectors.toList());
-					if (kunden.size() == 1)
-						k = kunden.get(0);
+					if (kunden.size() == 1) {
+						if (kunden.get(0).getReservasjoner().size() < 1)
+							k = kunden.get(0);
+						else {
+							if (kunden.get(0).getReservasjoner().get(kunden.get(0).getReservasjoner().size() - 1).getRetur() != null)
+								k = kunden.get(0);
+							else
+								System.out.println("Oops! Kan ikke reservere samtidig som en annen reservasjon er pågående.");
+						}
+					}											
 					else
 						System.out.println("Ingen kunde registrert med det nummeret.");
 				} catch (NumberFormatException e) {
@@ -105,7 +113,7 @@ public class Main {
 		k.leggTilReservasjon(reservasjon);
 		List<Leiebil> reservertBil = reservasjon.getUtleiekontor().getLeiebiler().stream()
 				.filter(a -> a.getUtleiegruppe() == reservasjon.getBilgruppe()).collect(Collectors.toList());
-		reservertBil.get(0).setErLedig(false);
+		reservertBil.get(0).setLedig(false);
 		System.out.println("Reservasjon fullført! Reservert under navnet: " + k.toString());
 	}
 
@@ -304,22 +312,112 @@ public class Main {
 		return kunde;
 	}
 
+	/**
+	 * 
+	 */
 	private static void utleie() {
-		//spør om tlf nummer
-		
-		LocalDateTime now = LocalDateTime.now();
-		Kunde k;
-		List<Reservasjon> reservasjonen = k.getReservasjoner().stream()
-				.filter(a -> a.getUtleiedato().getYear() == now.getYear() && a.getUtleiedato().getDayOfYear() == now.getDayOfYear())
+		System.out.println("Skriv inn telefonnummret ditt: ");
+		Kunde k = null;
+		while (k == null) {
+			try {
+				int input = Integer.parseInt(sc.nextLine());
+				List<Kunde> kunden = bilutleieselskap.getKunder().stream().filter(a -> a.getTelefonNr() == input)
+						.collect(Collectors.toList());
+				if (kunden.size() == 1)
+					k = kunden.get(0);
+				else {
+					System.out.println("Ingen kunde registrert med det nummeret.");
+					return;
+				}
+			} catch (NumberFormatException e) {
+				System.out.println("Ugyldig input. Prøv igjen. (Bare tall)");
+			}
+		}
+		Reservasjon reservasjonen = k.getReservasjoner().get(k.getReservasjoner().size() - 1);
+		if (reservasjonen.getUtleie() != null) {
+			System.out.println("Ingen aktiv reservasjon. Utleie umulig.");
+			return;
+		}
+		String kredNrString = null;
+		while (validator.kredittkortNrSjekk(kredNrString)) {
+			kredNrString = sc.nextLine();
+		}
+		int kredNr = Integer.parseInt(kredNrString);
+		List<Leiebil> leiebiler = reservasjon.getUtleiekontor().getLeiebiler().stream()
+				.filter(a -> a.getUtleiegruppe() == reservasjonen.getBilgruppe() && !a.isLedig())
 				.collect(Collectors.toList());
-		if (reservasjonen.size() != 0)
-			//Reservasjon den = reservasjonen.get(0);
-			;
+		Leiebil leiebilen = leiebiler.get(0);
+		reservasjonen.getUtleiekontor().getLeiebiler().remove(leiebilen);
+		reservasjonen.getReturkontor().getLeiebiler().add(leiebilen);
+		String regNr = leiebilen.getRegNr();
+		System.out.println("Skriv inn nåværende kilometer-tall: ");
+		int km = -1;
+		while (km < 0) {
+			try {
+				km = Integer.parseInt(sc.nextLine());
+				if (km < 0)
+					System.out.println("Ugyldig input. Prøv igjen. (Kan ikke være mindre enn 0)");
+			}
+			catch (NumberFormatException e) {	
+				System.out.println("Ugyldig input. Prøv igjen. (Bare tall)");
+			}
+		}
+		LocalDateTime now = LocalDateTime.now();
+		LocalDateTime retur = now.plusDays(reservasjonen.getAntallDager());
+		Utleie utleie = new Utleie(kredNr, regNr, km, now, retur);
+		reservasjon.setUtleie(utleie);
+		System.out.println("Utleie fullført!");
+		
 	}
 
+	/**
+	 * 
+	 */
 	private static void retur() {
-		// TODO Auto-generated method stub
-
+		
+		System.out.println("Skriv inn telefonnummret ditt: ");
+		Kunde k = null;
+		while (k == null) {
+			try {
+				int input = Integer.parseInt(sc.nextLine());
+				List<Kunde> kunden = bilutleieselskap.getKunder().stream().filter(a -> a.getTelefonNr() == input)
+						.collect(Collectors.toList());
+				if (kunden.size() == 1)
+					k = kunden.get(0);
+				else {
+					System.out.println("Ingen kunde registrert med det nummeret.");
+					return;
+				}
+			} catch (NumberFormatException e) {
+				System.out.println("Ugyldig input. Prøv igjen. (Bare tall)");
+			}
+		}
+		
+		Reservasjon reservasjonen = k.getReservasjoner().get(k.getReservasjoner().size() - 1);
+		if (reservasjonen.getRetur() != null || reservasjonen.getUtleie() == null) {
+			System.out.println("Ingen aktiv utleie. Retur umulig.");
+			return;
+		}
+		System.out.println("Skriv inn nåværende kilometer-tall: ");
+		int km = -1;
+		while (km < reservasjonen.getUtleie().getKilometer()) {
+			try {
+				km = Integer.parseInt(sc.nextLine());
+				if (km < reservasjonen.getUtleie().getKilometer())
+					System.out.println("Ugyldig input. Prøv igjen. (Kan ikke være mindre enn tidligere kilometer-tall)");
+			}
+			catch (NumberFormatException e) {	
+				System.out.println("Ugyldig input. Prøv igjen. (Bare tall)");
+			}
+		}
+		LocalDateTime returdato = LocalDateTime.now();
+		Retur retur = new Retur(km, returdato);
+		reservasjon.setRetur(retur);
+		List<Leiebil> leiebilen = reservasjon.getReturkontor().getLeiebiler().stream()
+				.filter(a -> a.getRegNr() == reservasjon.getUtleie().getRegNr())
+				.collect(Collectors.toList());
+		leiebilen.get(0).setLedig(true);
+		System.out.println("Retur fullført! Faktura blir sendt i posten, med mindre du betaler i skranken.");
+		
 	}
-
 }

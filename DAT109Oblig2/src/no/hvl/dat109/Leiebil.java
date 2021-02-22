@@ -13,7 +13,7 @@ public class Leiebil {
 	private String modell;
 	private String farge;
 	private BilgruppeEnum utleiegruppe;
-	private boolean erLedig;
+	private boolean ledig;
 
 	/**
 	 * @param regNr        Registreringsnummeret til bilen.
@@ -21,16 +21,16 @@ public class Leiebil {
 	 * @param modell       Modellen til bilen.
 	 * @param farge        Fargen på bilen.
 	 * @param utleiegruppe Utleiegruppen til bilen.
-	 * @param erLedig      Om bilen er ledig eller ikke.
+	 * @param ledig        Om bilen er ledig eller ikke.
 	 */
 	public Leiebil(String regNr, String merke, String modell, String farge, BilgruppeEnum utleiegruppe,
-			boolean erLedig) {
+			boolean ledig) {
 		this.regNr = regNr;
 		this.merke = merke;
 		this.modell = modell;
 		this.farge = farge;
 		this.utleiegruppe = utleiegruppe;
-		this.erLedig = erLedig;
+		this.ledig = ledig;
 	}
 
 	public String getRegNr() {
@@ -73,17 +73,17 @@ public class Leiebil {
 		this.utleiegruppe = utleiegruppe;
 	}
 
-	public boolean isErLedig() {
-		return erLedig;
+	public boolean isLedig() {
+		return ledig;
 	}
 
-	public void setErLedig(boolean erLedig) {
-		this.erLedig = erLedig;
+	public void setLedig(boolean ledig) {
+		this.ledig = ledig;
 	}
 
 	@Override
 	public String toString() {
-		return "[" + merke + " , Modell=" + modell + ", " + farge + ", " + utleiegruppe + ", erLedig= " + erLedig + "]";
+		return "[" + merke + " , Modell=" + modell + ", " + farge + ", " + utleiegruppe + ", erLedig= " + ledig + "]";
 	}
 
 }

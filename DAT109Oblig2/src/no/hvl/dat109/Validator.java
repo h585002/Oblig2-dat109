@@ -32,6 +32,10 @@ public class Validator {
 			System.out.println("Ugyldig input. Prøv igjen. (8 siffer)");
 		return false;
 	}
+	
+	public boolean kredittkortNrSjekk(String s) {
+		return (s != null && s.matches("^[0-9]{16}$"));
+	}
 
 	public boolean kontorSjekk(String s, Bilutleieselskap b) {
 		List<String> kontorer = b.getKontorer().stream()
