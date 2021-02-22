@@ -229,13 +229,13 @@ public class Klient {
 		boolean a, b, c, d;
 		a = b = c = d = false;
 		for (int i = 0; i < kontor.getLeiebiler().size(); i++) {
-			if (kontor.getLeiebiler().get(i).getUtleiegruppe() == BilgruppeEnum.LITEN)
+			if (kontor.getLeiebiler().get(i).getUtleiegruppe() == BilgruppeEnum.LITEN && kontor.getLeiebiler().get(i).isLedig())
 				a = true;
-			else if (kontor.getLeiebiler().get(i).getUtleiegruppe() == BilgruppeEnum.MELLOMSTOR)
+			else if (kontor.getLeiebiler().get(i).getUtleiegruppe() == BilgruppeEnum.MELLOMSTOR && kontor.getLeiebiler().get(i).isLedig())
 				b = true;
-			else if (kontor.getLeiebiler().get(i).getUtleiegruppe() == BilgruppeEnum.STOR)
+			else if (kontor.getLeiebiler().get(i).getUtleiegruppe() == BilgruppeEnum.STOR && kontor.getLeiebiler().get(i).isLedig())
 				c = true;
-			else if (kontor.getLeiebiler().get(i).getUtleiegruppe() == BilgruppeEnum.STASJONSVOGN)
+			else if (kontor.getLeiebiler().get(i).getUtleiegruppe() == BilgruppeEnum.STASJONSVOGN && kontor.getLeiebiler().get(i).isLedig())
 				d = true;
 		}
 		int pris = 0;
@@ -351,10 +351,13 @@ public class Klient {
 			return;
 		}
 		String kredNrString = null;
-		while (validator.kredittkortNrSjekk(kredNrString)) {
+		System.out.println("Skriv inn kredittkort-nummer: ");
+		while (!validator.kredittkortNrSjekk(kredNrString)) {
 			kredNrString = sc.nextLine();
+			if (!validator.kredittkortNrSjekk(kredNrString))
+				System.out.println("Ugyldig input. Prøv igjen. (Bare tall, 16 siffer)");
 		}
-		int kredNr = Integer.parseInt(kredNrString);
+		Long kredNr = Long.parseLong(kredNrString);
 		List<Leiebil> leiebiler = reservasjon.getUtleiekontor().getLeiebiler().stream()
 				.filter(a -> a.getUtleiegruppe() == reservasjonen.getBilgruppe() && !a.isLedig())
 				.collect(Collectors.toList());

@@ -38,11 +38,7 @@ public class Database {
 				new Utleiekontor(3, 45345676, "TRONDHEIM", "Trondheim lufthavn Værnes, 7502 STJØRDAL", leiebiler3));
 		kontorer.add(new Utleiekontor(4, 12343234, "OSLO", "Edvard Munchs veg, 2061 GARDEMOEN", leiebiler4));
 
-		List<Kunde> kunder = new ArrayList<Kunde>();
-		kunder.add(
-				new Kunde("Ola", "Nordmann", "Gråbakken 7, 1234, Gråfossen", 88888888, new ArrayList<Reservasjon>()));
-
-		return new Bilutleieselskap("Bonanza Bilutleie", 12345678, "Bortegaten 1, 7309, Langtvekke", kontorer, kunder);
+		return new Bilutleieselskap("Bonanza Bilutleie", 12345678, "Bortegaten 1, 7309, Langtvekke", kontorer, new ArrayList<Kunde>());
 
 	}
 
