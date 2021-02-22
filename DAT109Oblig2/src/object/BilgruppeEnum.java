@@ -1,5 +1,9 @@
 package object;
 
+/**
+ * @author vikse
+ *
+ */
 public enum BilgruppeEnum {
 	
 
