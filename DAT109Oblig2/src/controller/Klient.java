@@ -16,7 +16,7 @@ import object.Reservasjon;
 import object.Retur;
 import object.Utleie;
 import object.Utleiekontor;
-import object.Validator;
+import test.Validator;
 
 /**
  * Definerer logikken til Utleieprogrammet.
@@ -24,7 +24,7 @@ import object.Validator;
  * @author Vebjoern Vaardal
  *
  */
-public class Main {
+public class Klient {
 
 	// Later som vi henter eksisterende kunder, kontorer og biler fra database,
 	// istedenfor å implementere det.
