@@ -1,4 +1,4 @@
-package no.hvl.dat109;
+package object;
 
 /**
  * Faste dagspriser til de forskjellige bilgruppene.

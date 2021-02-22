@@ -1,10 +1,22 @@
-package no.hvl.dat109;
+package controller;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+
+import object.BilgruppeEnum;
+import object.Bilutleieselskap;
+import object.Database;
+import object.Kunde;
+import object.Leiebil;
+import object.Priser;
+import object.Reservasjon;
+import object.Retur;
+import object.Utleie;
+import object.Utleiekontor;
+import object.Validator;
 
 /**
  * Definerer logikken til Utleieprogrammet.

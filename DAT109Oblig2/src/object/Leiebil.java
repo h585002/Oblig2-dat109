@@ -1,4 +1,4 @@
-package no.hvl.dat109;
+package object;
 
 /**
  * Definerer en leiebil ved et utleiekontor eller under leie.
