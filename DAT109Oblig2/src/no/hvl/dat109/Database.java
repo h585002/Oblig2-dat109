@@ -39,5 +39,9 @@ public class Database {
 		return new Bilutleieselskap("Bonanza Bilutleie", 12345678, "Bortegaten 1, 7309, Langtvekke", kontorer, kunder);
 
 	}
+	
+	public void lagreInfo() {
+		//Gjør ingenting
+	}
 
 }

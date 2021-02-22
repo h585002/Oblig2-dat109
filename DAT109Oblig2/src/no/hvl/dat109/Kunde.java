@@ -2,6 +2,12 @@ package no.hvl.dat109;
 
 import java.util.List;
 
+/**
+ * Definerer en registrert kunde i et bilutleieselskap.
+ * 
+ * @author Vebjoern Vaardal
+ *
+ */
 public class Kunde {
 
 	private String fornavn;
@@ -10,6 +16,13 @@ public class Kunde {
 	private int telefonNr;
 	private List<Reservasjon> reservasjoner;
 
+	/**
+	 * @param fornavn       Fornavnet til kunden.
+	 * @param etternavn     Etternavnet til kunden.
+	 * @param adresse       Adressen til kunden.
+	 * @param telefonNr     Telefonnummeret til kunden.
+	 * @param reservasjoner Reservasjonene til kunden.
+	 */
 	public Kunde(String fornavn, String etternavn, String adresse, int telefonNr, List<Reservasjon> reservasjoner) {
 		this.fornavn = fornavn;
 		this.etternavn = etternavn;
@@ -57,11 +70,15 @@ public class Kunde {
 	public void setReservasjon(List<Reservasjon> reservasjon) {
 		this.reservasjoner = reservasjon;
 	}
-	
+
+	/**
+	 * @param reservasjon Reservasjonen som legges listen av reservasjonene til
+	 *                    kunden.
+	 */
 	public void leggTilReservasjon(Reservasjon reservasjon) {
 		reservasjoner.add(reservasjon);
 	}
-	
+
 	@Override
 	public String toString() {
 		return "[fornavn: " + fornavn + ", etternavn: " + etternavn + ", adresse: " + adresse + ", telefonNr: "

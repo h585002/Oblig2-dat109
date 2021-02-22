@@ -2,6 +2,12 @@ package no.hvl.dat109;
 
 import java.time.LocalDateTime;
 
+/**
+ * Definerer et utleie, basert på en reservasjon.
+ * 
+ * @author Vebjoern Vaardal
+ *
+ */
 public class Utleie {
 
 	private int kredittkortNr;
@@ -10,6 +16,13 @@ public class Utleie {
 	private LocalDateTime utleiedato;
 	private LocalDateTime returdato;
 
+	/**
+	 * @param kredittkortNr Kredittkortnummeret til kunden som leier.
+	 * @param regNr         Registreringsnummeret til bilen som leies.
+	 * @param kilometer     Kilometer-tallet til bilen før leie.
+	 * @param utleiedato    Datoen for når bilen ble hentet.
+	 * @param returdato     Datoen for når bilen forventes returnert.
+	 */
 	public Utleie(int kredittkortNr, String regNr, int kilometer, LocalDateTime utleiedato, LocalDateTime returdato) {
 		this.kredittkortNr = kredittkortNr;
 		this.regNr = regNr;

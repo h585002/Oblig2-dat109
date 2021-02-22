@@ -1,5 +1,11 @@
 package no.hvl.dat109;
 
+/**
+ * Definerer en leiebil ved et utleiekontor eller under leie.
+ * 
+ * @author Vebjoern Vaardal
+ *
+ */
 public class Leiebil {
 
 	private String regNr;
@@ -9,7 +15,16 @@ public class Leiebil {
 	private BilgruppeEnum utleiegruppe;
 	private boolean erLedig;
 
-	public Leiebil(String regNr, String merke, String modell, String farge, BilgruppeEnum utleiegruppe, boolean erLedig) {
+	/**
+	 * @param regNr        Registreringsnummeret til bilen.
+	 * @param merke        Merket til bilen.
+	 * @param modell       Modellen til bilen.
+	 * @param farge        Fargen på bilen.
+	 * @param utleiegruppe Utleiegruppen til bilen.
+	 * @param erLedig      Om bilen er ledig eller ikke.
+	 */
+	public Leiebil(String regNr, String merke, String modell, String farge, BilgruppeEnum utleiegruppe,
+			boolean erLedig) {
 		this.regNr = regNr;
 		this.merke = merke;
 		this.modell = modell;
@@ -68,8 +83,7 @@ public class Leiebil {
 
 	@Override
 	public String toString() {
-		return "[" + merke + " , Modell=" + modell + ", " + farge + ", " + utleiegruppe
-				+ ", erLedig= " + erLedig + "]";
+		return "[" + merke + " , Modell=" + modell + ", " + farge + ", " + utleiegruppe + ", erLedig= " + erLedig + "]";
 	}
 
 }

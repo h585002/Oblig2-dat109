@@ -2,6 +2,12 @@ package no.hvl.dat109;
 
 import java.util.List;
 
+/**
+ * Definerer et utleiekontor i et bilutleieselskap.
+ * 
+ * @author Vebjoern Vaardal
+ *
+ */
 public class Utleiekontor {
 
 	private int nummer;
@@ -10,6 +16,13 @@ public class Utleiekontor {
 	private String adresse;
 	private List<Leiebil> leiebiler;
 
+	/**
+	 * @param nummer    Kontornummeret til kontoret.
+	 * @param telefonNr Telefonnummeret til kontoret.
+	 * @param by        Byen kontoret er plassert i.
+	 * @param adresse   Adressen til kontoret.
+	 * @param leiebiler Leiebilene som befinner seg ved kontoret.
+	 */
 	public Utleiekontor(int nummer, int telefonNr, String by, String adresse, List<Leiebil> leiebiler) {
 		this.nummer = nummer;
 		this.telefonNr = telefonNr;

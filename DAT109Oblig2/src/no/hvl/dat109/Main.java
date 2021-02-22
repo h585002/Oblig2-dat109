@@ -6,6 +6,12 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+/**
+ * Definerer logikken til Utleieprogrammet.
+ * 
+ * @author Vebjoern Vaardal
+ *
+ */
 public class Main {
 
 	// Later som vi henter eksisterende kunder, kontorer og biler fra database,
@@ -16,6 +22,11 @@ public class Main {
 	static Validator validator = new Validator();
 	static Scanner sc = new Scanner(System.in);
 
+	/**
+	 * Hovedmeny for valg av reservasjon, utleie og retur.
+	 * 
+	 * @param args Ikke i bruk.
+	 */
 	public static void main(String[] args) {
 
 		boolean running = true;
@@ -41,13 +52,17 @@ public class Main {
 			default:
 				System.out.println("Ugyldig input, prøv igjen");
 			}
-
+			// Later som vi lagrer ny info i databasen.
+			database.lagreInfo();
 		}
 
 		sc.close();
 
 	}
 
+	/**
+	 * Reservering av bil.
+	 */
 	public static void reservasjon() {
 
 		reservasjon = new Reservasjon();
@@ -59,15 +74,15 @@ public class Main {
 		reservasjon.setPris(pris());
 		Kunde k = null;
 		while (k == null) {
-			System.out.println("Vennligst velg med tall: \n1 - Allerede registrert\n2 - Ny kunde\n3 - Avbryt reservasjon");
+			System.out.println(
+					"Vennligst velg med tall: \n1 - Allerede registrert\n2 - Ny kunde\n3 - Avbryt reservasjon");
 			switch (sc.nextLine()) {
 			case "1":
 				System.out.println("Vennligst skriv inn telefonnummeret ditt: ");
 				int input;
 				try {
 					input = Integer.parseInt(sc.nextLine());
-					List<Kunde> kunden = bilutleieselskap.getKunder().stream()
-							.filter(a -> a.getTelefonNr() == input)
+					List<Kunde> kunden = bilutleieselskap.getKunder().stream().filter(a -> a.getTelefonNr() == input)
 							.collect(Collectors.toList());
 					if (kunden.size() == 1)
 						k = kunden.get(0);
@@ -83,13 +98,20 @@ public class Main {
 				break;
 			case "3":
 				return;
-			default:;
+			default:
+				;
 			}
-		}	
+		}
 		k.leggTilReservasjon(reservasjon);
+		List<Leiebil> reservertBil = reservasjon.getUtleiekontor().getLeiebiler().stream()
+				.filter(a -> a.getUtleiegruppe() == reservasjon.getBilgruppe()).collect(Collectors.toList());
+		reservertBil.get(0).setErLedig(false);
 		System.out.println("Reservasjon fullført! Reservert under navnet: " + k.toString());
 	}
 
+	/**
+	 * @return Returnerer ønsket utleiekontor for kunden.
+	 */
 	public static Utleiekontor utleiested() {
 
 		String input;
@@ -104,6 +126,9 @@ public class Main {
 		return utleiekontor;
 	}
 
+	/**
+	 * @return Returnerer ønsket returkontor for kunden.
+	 */
 	public static Utleiekontor retursted() {
 
 		String input;
@@ -118,6 +143,9 @@ public class Main {
 		return returkontor;
 	}
 
+	/**
+	 * @return Returnerer ønsket utleiedato for kunden.
+	 */
 	public static LocalDateTime utleiedato() {
 
 		String input;
@@ -158,6 +186,9 @@ public class Main {
 		return tid;
 	}
 
+	/**
+	 * @return Returnerer øsnket antall dager leie for kunden.
+	 */
 	public static int antallDager() {
 
 		System.out.println("Hvor mange dager skal du leie bilen? ");
@@ -167,6 +198,9 @@ public class Main {
 		return dager;
 	}
 
+	/**
+	 * @return Returnerer pris på ønsket kategori for kunden, basert på pris av tilgjengelige kategorier og antall dager utleie.
+	 */
 	public static int pris() {
 
 		System.out.println("Ledige kategorier: ");
@@ -209,13 +243,17 @@ public class Main {
 		} while (!validator.kategoriSjekk(input, a, b, c, d));
 		switch (input.toUpperCase()) {
 		case "A":
-			pris += Priser.A_PRIS;
+			pris += Priser.A_PRIS * reservasjon.getAntallDager();
+			break;
 		case "B":
-			pris += Priser.B_PRIS;
+			pris += Priser.B_PRIS * reservasjon.getAntallDager();
+			break;
 		case "C":
-			pris += Priser.C_PRIS;
+			pris += Priser.C_PRIS * reservasjon.getAntallDager();
+			break;
 		case "D":
-			pris += Priser.D_PRIS;
+			pris += Priser.D_PRIS * reservasjon.getAntallDager();
+			break;
 		default:
 			;
 		}
@@ -223,6 +261,9 @@ public class Main {
 		return pris;
 	}
 
+	/**
+	 * @return Returnerer en ny kunde som skal registreres.
+	 */
 	public static Kunde nyKunde() {
 		System.out.println("Registrer dine personopplysninger her:\n");
 
@@ -260,11 +301,6 @@ public class Main {
 		Kunde kunde = new Kunde(fornavn, etternavn, adresse, tlf, new ArrayList<Reservasjon>());
 		System.out.println("Opplysningene du har gitt:" + "\n" + kunde.toString());
 		return kunde;
-	}
-
-	public static Kunde lagreKunde() {
-
-		return null;
 	}
 
 	private static void utleie() {

@@ -1,8 +1,13 @@
 package no.hvl.dat109;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
+/**
+ * Definerer et bilutleieselskap.
+ * 
+ * @author Vebjoern Vaardal
+ *
+ */
 public class Bilutleieselskap {
 
 	private String navn;
@@ -11,6 +16,13 @@ public class Bilutleieselskap {
 	private List<Utleiekontor> kontorer;
 	private List<Kunde> kunder;
 
+	/**
+	 * @param navn      Navnet på bilutleieselskapet.
+	 * @param telefonNr Telefonnummeret til bilutleieselskapet.
+	 * @param adresse   Adressen til bilutleieselskapet.
+	 * @param kontorer  Kontorene til bilutleieselskapet.
+	 * @param kunder    De registrerte kundene til bilutleieselskapet.
+	 */
 	public Bilutleieselskap(String navn, int telefonNr, String adresse, List<Utleiekontor> kontorer,
 			List<Kunde> kunder) {
 		this.navn = navn;
@@ -59,16 +71,19 @@ public class Bilutleieselskap {
 	public void setKunder(List<Kunde> kunder) {
 		this.kunder = kunder;
 	}
-	
+
+	/**
+	 * @param kunde Kunden som legges til listen av registrerte kunder.
+	 */
 	public void leggTilKunde(Kunde kunde) {
-			kunder.add(kunde);
+		kunder.add(kunde);
 	}
-	
-	//returnerer kontorer som bruker skriver inn
-	public Utleiekontor KontorEtterNavn(String by) {		
+
+	// returnerer kontorer som bruker skriver inn
+	public Utleiekontor KontorEtterNavn(String by) {
 		Utleiekontor sok = null;
-		for(int i = 0; i < kontorer.size(); i++) {			
-			if(kontorer.get(i).getBy().equalsIgnoreCase(by)) {	
+		for (int i = 0; i < kontorer.size(); i++) {
+			if (kontorer.get(i).getBy().equalsIgnoreCase(by)) {
 				sok = kontorer.get(i);
 			}
 		}

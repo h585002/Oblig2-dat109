@@ -2,6 +2,12 @@ package no.hvl.dat109;
 
 import java.time.LocalDateTime;
 
+/**
+ * Definerer en reservasjon for en kunde som er registrert i bilutleieselskapet.
+ * 
+ * @author Vebjoern Vaardal
+ *
+ */
 public class Reservasjon {
 
 	private LocalDateTime utleiedato;
@@ -21,9 +27,18 @@ public class Reservasjon {
 		this.utleie = null;
 		this.retur = null;
 	}
-	
+
+	/**
+	 * @param utleiedato   Datoen bilen skal leies ut.
+	 * @param antallDager  Antall dager bilen skal leies.
+	 * @param pris         Prisen til utleien.
+	 * @param utleiekontor Kontoret bilen skal hentes ved.
+	 * @param returkontor  Kontoret bilen skal leveres ved.
+	 * @param utleie       Utleien, som blir opprettet ved henting.
+	 * @param retur        Returen, som blir opprettet ved retur.
+	 */
 	public Reservasjon(LocalDateTime utleiedato, int antallDager, int pris, Utleiekontor utleiekontor,
-			Utleiekontor returkontor, Utleie utleie, Retur retur, Kunde kunde) {
+			Utleiekontor returkontor, Utleie utleie, Retur retur) {
 		this.utleiedato = utleiedato;
 		this.antallDager = antallDager;
 		this.pris = pris;
@@ -88,12 +103,15 @@ public class Reservasjon {
 	public void setRetur(Retur retur) {
 		this.retur = retur;
 	}
-	
-	public BilgruppeEnum getBilgruppe () {
+
+	/**
+	 * @return Returnerer bilgruppen som er reservert, basert på prisen.
+	 */
+	public BilgruppeEnum getBilgruppe() {
 		int kPris = pris;
 		if (!utleiekontor.equals(returkontor))
 			kPris -= 100;
-		kPris = kPris/antallDager;
+		kPris = kPris / antallDager;
 		if (kPris == Priser.A_PRIS)
 			return BilgruppeEnum.LITEN;
 		if (kPris == Priser.B_PRIS)
