@@ -1,9 +1,11 @@
-package object;
+package test;
 
 import java.time.DateTimeException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import object.Bilutleieselskap;
 
 public class Validator {
 

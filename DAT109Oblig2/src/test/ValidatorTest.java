@@ -5,8 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import object.Validator;
-
 public class ValidatorTest {
 
 	public Validator validator = new Validator();
@@ -20,16 +18,6 @@ public class ValidatorTest {
 	@Test
 	public void etternavnTrue() {
 		assertTrue(validator.navnSjekk("Øystein "));
-	}
-	
-	@Test
-	public void telefonNrFalse() {
-		assertFalse(validator.telefonNrSjekk("45"));
-	}
-	
-	@Test
-	public void telefonNrTrue() {
-		assertTrue(validator.telefonNrSjekk("45453423"));
 	}
 	
 	@Test
