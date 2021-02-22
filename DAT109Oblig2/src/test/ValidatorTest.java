@@ -83,7 +83,7 @@ public class ValidatorTest {
 	
 	@Test
 	public void minuttTrue() {
-		assertTrue(validator.minuttSjekk("14"));
+		assertTrue(validator.minuttSjekk("15"));
 	}
 	
 	@Test
