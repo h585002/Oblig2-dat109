@@ -2,14 +2,16 @@ package no.hvl.dat109;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Main {
 
 	// Later som vi henter eksisterende kunder, kontorer og biler fra database,
 	// istedenfor å implementere det.
 	static Database database = new Database();
-	static Bilutleieselskap bilutleieselskap = database.hentInfo();;
+	static Bilutleieselskap bilutleieselskap = database.hentInfo();
 	static Reservasjon reservasjon;
 	static Validator validator = new Validator();
 	static Scanner sc = new Scanner(System.in);
@@ -22,7 +24,7 @@ public class Main {
 
 			System.out.println("Velkommen til Bonanza Bilutleie!\n");
 			System.out.println("Velg hva du ønsker å gjøre: (Skriv tallet)\n1 - Reservasjon\n2 "
-					+ "- NOT IMPLEMENTED\n3 - NOT IMPLEMENTED\n4 - Avslutt");
+					+ "- Utleie\n3 - Retur\n4 - Avslutt");
 			switch (sc.nextLine()) {
 			case "1":
 				reservasjon();
@@ -55,25 +57,37 @@ public class Main {
 		reservasjon.setUtleiedato(utleiedato());
 		reservasjon.setAntallDager(antallDager());
 		reservasjon.setPris(pris());
-		System.out.println("Vennligst velg med tall: \n1 - Allerede registrert\n2 - Ny kunde\n3 - Avbryt reservasjon");
-		Kunde k;
-		switch (sc.nextLine()) {
+		Kunde k = null;
+		while (k == null) {
+			System.out.println("Vennligst velg med tall: \n1 - Allerede registrert\n2 - Ny kunde\n3 - Avbryt reservasjon");
+			switch (sc.nextLine()) {
 			case "1":
 				System.out.println("Vennligst skriv inn telefonnummeret ditt: ");
+				int input;
+				try {
+					input = Integer.parseInt(sc.nextLine());
+					List<Kunde> kunden = bilutleieselskap.getKunder().stream()
+							.filter(a -> a.getTelefonNr() == input)
+							.collect(Collectors.toList());
+					if (kunden.size() == 1)
+						k = kunden.get(0);
+					else
+						System.out.println("Ingen kunde registrert med det nummeret.");
+				} catch (NumberFormatException e) {
+					System.out.println("Ugyldig input. Prøv igjen. (Bare tall)");
+				}
 				break;
 			case "2":
-				 = nyKunde();
+				bilutleieselskap.leggTilKunde(nyKunde());
+				k = bilutleieselskap.getKunder().get(bilutleieselskap.getKunder().size() - 1);
 				break;
 			case "3":
-				break;
+				return;
 			default:;
-		}
-		
-		bilutleieselskap.leggTilKunde(nyKunde);
-		
-
-			
-
+			}
+		}	
+		k.leggTilReservasjon(reservasjon);
+		System.out.println("Reservasjon fullført! Reservert under navnet: " + k.toString());
 	}
 
 	public static Utleiekontor utleiested() {
@@ -192,8 +206,8 @@ public class Main {
 		System.out.println("Skriv hvilken kategori du skal bestille: (Bare bokstaven)");
 		do {
 			input = sc.nextLine();
-		} while (validator.kategoriSjekk(input, a, b, c, d));
-		switch (sc.nextLine().toUpperCase()) {
+		} while (!validator.kategoriSjekk(input, a, b, c, d));
+		switch (input.toUpperCase()) {
 		case "A":
 			pris += Priser.A_PRIS;
 		case "B":

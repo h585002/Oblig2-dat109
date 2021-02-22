@@ -28,7 +28,7 @@ public class Validator {
 				System.out.println("Kunde med dette telefonnummeret er allerede registrert.");
 			else
 				return true;
-		} else 
+		} else if (s != null)
 			System.out.println("Ugyldig input. Prøv igjen. (8 siffer)");
 		return false;
 	}
