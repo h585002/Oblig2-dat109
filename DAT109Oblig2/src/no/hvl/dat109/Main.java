@@ -199,7 +199,8 @@ public class Main {
 	}
 
 	/**
-	 * @return Returnerer pris på ønsket kategori for kunden, basert på pris av tilgjengelige kategorier og antall dager utleie.
+	 * @return Returnerer pris på ønsket kategori for kunden, basert på pris av
+	 *         tilgjengelige kategorier og antall dager utleie.
 	 */
 	public static int pris() {
 
@@ -304,8 +305,16 @@ public class Main {
 	}
 
 	private static void utleie() {
-		// TODO Auto-generated method stub
-
+		//spør om tlf nummer
+		
+		LocalDateTime now = LocalDateTime.now();
+		Kunde k;
+		List<Reservasjon> reservasjonen = k.getReservasjoner().stream()
+				.filter(a -> a.getUtleiedato().getYear() == now.getYear() && a.getUtleiedato().getDayOfYear() == now.getDayOfYear())
+				.collect(Collectors.toList());
+		if (reservasjonen.size() != 0)
+			//Reservasjon den = reservasjonen.get(0);
+			;
 	}
 
 	private static void retur() {

@@ -63,11 +63,11 @@ public class Kunde {
 		this.telefonNr = telefonNr;
 	}
 
-	public List<Reservasjon> getReservasjon() {
+	public List<Reservasjon> getReservasjoner() {
 		return reservasjoner;
 	}
 
-	public void setReservasjon(List<Reservasjon> reservasjon) {
+	public void setReservasjoner(List<Reservasjon> reservasjon) {
 		this.reservasjoner = reservasjon;
 	}
 
