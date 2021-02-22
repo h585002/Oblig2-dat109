@@ -8,13 +8,16 @@ import org.junit.jupiter.api.Test;
 import object.Bilutleieselskap;
 import object.Database;
 
+/**
+ * @author oyste
+ *
+ */
 public class ValidatorTest {
 	
 	static Database database = new Database();
 	static Bilutleieselskap bilutleieselskap = database.hentInfo();
 
 	public Validator validator = new Validator();
-	
 	
 	@Test
 	public void etternavnFalse() {

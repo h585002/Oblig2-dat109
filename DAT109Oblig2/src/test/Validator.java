@@ -7,20 +7,34 @@ import java.util.stream.Collectors;
 
 import object.Bilutleieselskap;
 
+/**
+ * @author oyste
+ *
+ */
 public class Validator {
 
-	// Godtar alle bokstaver, lengde på 2-20
-	// bruker samme for fornavn og etternavn
+	/**
+	 * @param s
+	 * @return
+	 */
 	public boolean navnSjekk(String s) {
 		return s != null && s.matches("^[-a-zA-ZæøåÆØÅ_ ]{2,20}$");
 	}
 
-	// Godtar alt, minimumlengde på 5
+	/**
+	 * @param s
+	 * @return
+	 */
 	public boolean adresseSjekk(String s) {
 		return s != null && s.matches("^.{5,}$");
 	}
 
-	// Skal være 8 siffer
+	
+	/**
+	 * @param s
+	 * @param b
+	 * @return
+	 */
 	public boolean telefonNrSjekk(String s, Bilutleieselskap b) {
 		if (s != null && s.matches("^[0-9]{8}$")) {
 			List<Integer> nummre = b.getKunder().stream()
@@ -35,10 +49,19 @@ public class Validator {
 		return false;
 	}
 	
+	/**
+	 * @param s
+	 * @return
+	 */
 	public boolean kredittkortNrSjekk(String s) {
 		return (s != null && s.matches("^[0-9]{16}$"));
 	}
 
+	/**
+	 * @param s
+	 * @param b
+	 * @return
+	 */
 	public boolean kontorSjekk(String s, Bilutleieselskap b) {
 		List<String> kontorer = b.getKontorer().stream()
 				.map(a -> a.getBy())
@@ -50,6 +73,10 @@ public class Validator {
 		return true;
 	}
 	
+	/**
+	 * @param s
+	 * @return
+	 */
 	public boolean aarSjekk(String s) {
 		int i;
 		try {
@@ -65,6 +92,11 @@ public class Validator {
 		return true;
 	}
 	
+	/**
+	 * @param s
+	 * @param aar
+	 * @return
+	 */
 	public boolean maanedSjekk(String s, int aar) {
 		int i;
 		try {
@@ -89,6 +121,12 @@ public class Validator {
 
 	}
 
+	/**
+	 * @param s
+	 * @param aar
+	 * @param maaned
+	 * @return
+	 */
 	public boolean dagSjekk(String s, int aar, int maaned) {
 		int i;
 		try {
@@ -114,6 +152,10 @@ public class Validator {
 		return true;
 	}
 	
+	/**
+	 * @param s
+	 * @return
+	 */
 	public boolean timeSjekk(String s) {
 		int i;
 		try {
@@ -129,6 +171,10 @@ public class Validator {
 		return true;
 	}
 	
+	/**
+	 * @param s
+	 * @return
+	 */
 	public boolean minuttSjekk(String s) {
 		int i;
 		try {
@@ -144,6 +190,10 @@ public class Validator {
 		return true;
 	}
 	
+	/**
+	 * @param s
+	 * @return
+	 */
 	public boolean dagerSjekk(String s) {
 		int i;
 		try {
@@ -159,6 +209,14 @@ public class Validator {
 		return true;
 	}
 	
+	/**
+	 * @param s
+	 * @param a
+	 * @param b
+	 * @param c
+	 * @param d
+	 * @return
+	 */
 	public boolean kategoriSjekk(String s, boolean a, boolean b, boolean c, boolean d) {
 		if (a)
 			if (s.toUpperCase().equals("A"))
