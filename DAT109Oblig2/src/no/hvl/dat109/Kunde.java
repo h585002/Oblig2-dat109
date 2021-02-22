@@ -1,19 +1,21 @@
 package no.hvl.dat109;
 
+import java.util.List;
+
 public class Kunde {
 
 	private String fornavn;
 	private String etternavn;
 	private String adresse;
 	private int telefonNr;
-	private Reservasjon reservasjon;
+	private List<Reservasjon> reservasjoner;
 
-	public Kunde(String fornavn, String etternavn, String adresse, int telefonNr, Reservasjon reservasjon) {
+	public Kunde(String fornavn, String etternavn, String adresse, int telefonNr, List<Reservasjon> reservasjoner) {
 		this.fornavn = fornavn;
 		this.etternavn = etternavn;
 		this.adresse = adresse;
 		this.telefonNr = telefonNr;
-		this.reservasjon = reservasjon;
+		this.reservasjoner = reservasjoner;
 	}
 
 	public String getFornavn() {
@@ -48,12 +50,16 @@ public class Kunde {
 		this.telefonNr = telefonNr;
 	}
 
-	public Reservasjon getReservasjon() {
-		return reservasjon;
+	public List<Reservasjon> getReservasjon() {
+		return reservasjoner;
 	}
 
-	public void setReservasjon(Reservasjon reservasjon) {
-		this.reservasjon = reservasjon;
+	public void setReservasjon(List<Reservasjon> reservasjon) {
+		this.reservasjoner = reservasjon;
+	}
+	
+	public void leggTilReservasjon(Reservasjon reservasjon) {
+		reservasjoner.add(reservasjon);
 	}
 	
 	@Override

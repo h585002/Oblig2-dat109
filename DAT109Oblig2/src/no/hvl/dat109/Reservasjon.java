@@ -11,7 +11,6 @@ public class Reservasjon {
 	private Utleiekontor returkontor;
 	private Utleie utleie;
 	private Retur retur;
-	private Kunde kunde;
 
 	public Reservasjon() {
 		this.utleiedato = null;
@@ -21,7 +20,6 @@ public class Reservasjon {
 		this.returkontor = null;
 		this.utleie = null;
 		this.retur = null;
-		this.kunde = null;
 	}
 	
 	public Reservasjon(LocalDateTime utleiedato, int antallDager, int pris, Utleiekontor utleiekontor,
@@ -33,7 +31,6 @@ public class Reservasjon {
 		this.returkontor = returkontor;
 		this.utleie = utleie;
 		this.retur = retur;
-		this.kunde = kunde;
 	}
 
 	public LocalDateTime getUtleiedato() {
@@ -91,13 +88,21 @@ public class Reservasjon {
 	public void setRetur(Retur retur) {
 		this.retur = retur;
 	}
-
-	public Kunde getKunde() {
-		return kunde;
-	}
-
-	public void setKunde(Kunde kunde) {
-		this.kunde = kunde;
+	
+	public BilgruppeEnum getBilgruppe () {
+		int kPris = pris;
+		if (!utleiekontor.equals(returkontor))
+			kPris -= 100;
+		kPris = kPris/antallDager;
+		if (kPris == Priser.A_PRIS)
+			return BilgruppeEnum.LITEN;
+		if (kPris == Priser.B_PRIS)
+			return BilgruppeEnum.MELLOMSTOR;
+		if (kPris == Priser.C_PRIS)
+			return BilgruppeEnum.STOR;
+		if (kPris == Priser.D_PRIS)
+			return BilgruppeEnum.STASJONSVOGN;
+		return null;
 	}
 
 	@Override

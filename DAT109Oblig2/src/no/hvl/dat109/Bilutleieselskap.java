@@ -1,6 +1,7 @@
 package no.hvl.dat109;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Bilutleieselskap {
 
@@ -57,6 +58,10 @@ public class Bilutleieselskap {
 
 	public void setKunder(List<Kunde> kunder) {
 		this.kunder = kunder;
+	}
+	
+	public void leggTilKunde(Kunde kunde) {
+			kunder.add(kunde);
 	}
 	
 	//returnerer kontorer som bruker skriver inn
