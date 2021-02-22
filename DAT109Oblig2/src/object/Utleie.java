@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  */
 public class Utleie {
 
-	private int kredittkortNr;
+	private long kredittkortNr;
 	private String regNr;
 	private int kilometer;
 	private LocalDateTime utleiedato;
@@ -23,7 +23,7 @@ public class Utleie {
 	 * @param utleiedato    Datoen for når bilen ble hentet.
 	 * @param returdato     Datoen for når bilen forventes returnert.
 	 */
-	public Utleie(int kredittkortNr, String regNr, int kilometer, LocalDateTime utleiedato, LocalDateTime returdato) {
+	public Utleie(long kredittkortNr, String regNr, int kilometer, LocalDateTime utleiedato, LocalDateTime returdato) {
 		this.kredittkortNr = kredittkortNr;
 		this.regNr = regNr;
 		this.kilometer = kilometer;
@@ -31,11 +31,11 @@ public class Utleie {
 		this.returdato = returdato;
 	}
 
-	public int getKredittkortNr() {
+	public long getKredittkortNr() {
 		return kredittkortNr;
 	}
 
-	public void setKredittkortNr(int kredittkortNr) {
+	public void setKredittkortNr(long kredittkortNr) {
 		this.kredittkortNr = kredittkortNr;
 	}
 
