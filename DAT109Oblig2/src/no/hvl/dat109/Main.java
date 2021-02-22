@@ -14,7 +14,7 @@ public class Main {
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-
+		
 		boolean running = true;
 		
 		while (running) {
@@ -24,12 +24,18 @@ public class Main {
 								+ "- NOT IMPLEMENTED\n3 - NOT IMPLEMENTED\n4 - Avslutt");
 			switch (sc.nextLine()) {
 			case "1": 
-				reserver();
+				reservasjon();
+				break;
+			case "2": 
+				utleie();
+				break;
+			case "3": 
+				retur();
 				break;
 			case "4": 
 				running = false;
 				break;	
-			default: System.out.println("Ugyldig input");
+			default: System.out.println("Ugyldig input, prøv igjen");
 			}
 			
 		}	
@@ -38,63 +44,24 @@ public class Main {
 
 	}
 
-	public static void reserver() {
+	public static void reservasjon() {
 		
-		System.out.println("Registrer dine personopplysninger her:\n");
-		reservasjon.setKunde(nyKunde());
 		System.out.println("\n" + "Vi har kontorer i disse byene: " + bilutleieselskap.getKontorer());
+		System.out.println("Skriv inn hvor du vil leie bil fra: ");
+		while ()
 		reservasjon.setUtleiekontor(utleiested());
 		reservasjon.setReturkontor(retursted());
 		reservasjon.setUtleiedato(utleiedato());
 		reservasjon.setAntallDager(antallDager());
 		reservasjon.setPris(pris());
+		System.out.println("Registrer dine personopplysninger her:\n");
+		reservasjon.setKunde(nyKunde());
 
-	}
-	
-	public static Kunde nyKunde() {
-			
-		String fornavn = null;
-		while(!validator.navnSjekk(fornavn)) {
-			if(fornavn != null) {
-				System.out.println("Ugyldig fornavn, prøv igjen:");
-			}
-		System.out.println("Fornavn:");
-		fornavn = sc.nextLine();
-	}
-		String etternavn = null;
-		while(!validator.navnSjekk(etternavn)) {
-			if(etternavn != null) {
-				System.out.println("Ugyldig etternavn, prøv igjen:");
-			}
-		System.out.println("Etternavn:");
-		etternavn = sc.nextLine();
-	}	
-		String adresse = null;
-		while(!validator.adresseSjekk(adresse)) {
-			if(adresse != null) {
-				System.out.println("Ugyldig adresse, prøv igjen:");
-			}
-		System.out.println("Adresse:");
-		adresse = sc.nextLine();
-	}	
-		String telefonNr = null;
-		while(!validator.telefonNrSjekk(telefonNr)) {
-			if(etternavn != null) {
-				System.out.println("Ugyldig telefonNummer, må inneholde 8 siffer:");
-			}
-		System.out.println("TelefonNummer:");
-		telefonNr = sc.nextLine();	
-	}
-		int tlf = Integer.parseInt(telefonNr);
-		
-		Kunde kunde = new Kunde(fornavn, etternavn, adresse, tlf, reservasjon);
-		System.out.println("Opplysningene du har gitt:" + "\n" + kunde.toString());
-		return kunde;
 	}
 
 	public static Utleiekontor utleiested() {
 
-		System.out.println("Skriv inn hvor du vil leie bil fra: ");
+		
 		String by = sc.nextLine();
 		Utleiekontor utleiekontor = bilutleieselskap.KontorEtterNavn(by);
 		System.out.println(utleiekontor);
@@ -191,9 +158,60 @@ public class Main {
 		return pris;
 	}
 
+	public static Kunde nyKunde() {
+		
+		String fornavn = null;
+		while(!validator.navnSjekk(fornavn)) {
+			if(fornavn != null) {
+				System.out.println("Ugyldig fornavn, prøv igjen:");
+			}
+		System.out.println("Fornavn:");
+		fornavn = sc.nextLine();
+	}
+		String etternavn = null;
+		while(!validator.navnSjekk(etternavn)) {
+			if(etternavn != null) {
+				System.out.println("Ugyldig etternavn, prøv igjen:");
+			}
+		System.out.println("Etternavn:");
+		etternavn = sc.nextLine();
+	}	
+		String adresse = null;
+		while(!validator.adresseSjekk(adresse)) {
+			if(adresse != null) {
+				System.out.println("Ugyldig adresse, prøv igjen:");
+			}
+		System.out.println("Adresse:");
+		adresse = sc.nextLine();
+	}	
+		String telefonNr = null;
+		while(!validator.telefonNrSjekk(telefonNr)) {
+			if(etternavn != null) {
+				System.out.println("Ugyldig telefonNummer, må inneholde 8 siffer:");
+			}
+		System.out.println("TelefonNummer:");
+		telefonNr = sc.nextLine();	
+	}
+		int tlf = Integer.parseInt(telefonNr);
+		
+		Kunde kunde = new Kunde(fornavn, etternavn, adresse, tlf, reservasjon);
+		System.out.println("Opplysningene du har gitt:" + "\n" + kunde.toString());
+		return kunde;
+	}
+	
 	public static Kunde lagreKunde() {
 
 		return null;
 	}
 
+	private static void utleie() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private static void retur() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

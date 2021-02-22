@@ -26,11 +26,11 @@ public class Database {
 
 		// Endret adresse til by
 		List<Utleiekontor> kontorer = new ArrayList<Utleiekontor>();
-		kontorer.add(new Utleiekontor(1, 12341234, "Bergen", "Flyplassvegen 555, 5258 BERGEN", leiebiler1));
-		kontorer.add(new Utleiekontor(2, 12121212, "Stavanger", "Flyplassvegen 230, 4055 SOLA", leiebiler2));
+		kontorer.add(new Utleiekontor(1, 12341234, "BERGEN", "Flyplassvegen 555, 5258 BERGEN", leiebiler1));
+		kontorer.add(new Utleiekontor(2, 12121212, "STAVANGER", "Flyplassvegen 230, 4055 SOLA", leiebiler2));
 		kontorer.add(
-				new Utleiekontor(3, 45345676, "Trondheim", "Trondheim lufthavn Værnes, 7502 STJØRDAL", leiebiler3));
-		kontorer.add(new Utleiekontor(4, 12343234, "Oslo", "Edvard Munchs veg, 2061 GARDEMOEN", leiebiler4));
+				new Utleiekontor(3, 45345676, "TRONDHEIM", "Trondheim lufthavn Værnes, 7502 STJØRDAL", leiebiler3));
+		kontorer.add(new Utleiekontor(4, 12343234, "OSLO", "Edvard Munchs veg, 2061 GARDEMOEN", leiebiler4));
 
 		List<Kunde> kunder = new ArrayList<Kunde>();
 		kunder.add(
